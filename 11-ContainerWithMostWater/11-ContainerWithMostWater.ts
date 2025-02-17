@@ -1,3 +1,4 @@
+// Last updated: 16/02/2025, 20:55:21
 function maxArea(height: number[]): number {
   // we'll use the 2 pointer approach to solve the problem
   // as we need to the maximum amount of water the container
