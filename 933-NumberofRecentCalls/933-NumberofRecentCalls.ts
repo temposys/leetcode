@@ -1,24 +1,18 @@
-// Last updated: 17/02/2025, 20:39:01
+// Last updated: 17/02/2025, 20:43:52
 class RecentCounter {
-    private requests: number[];
+    private queue: number[] = [];
 
-    constructor() {
-        this.requests = [];
-    }
+    constructor() {}
 
     ping(t: number): number {
-        this.requests.push(t);
+        this.queue.push(t);
         const minTime = t - 3000;
 
-        let i = this.requests.length - 1;
-        let result: number = 0;
-
-        while (this.requests[i] >= minTime) {
-            result++;
-            i--;
+        while (this.queue[0] < minTime) {
+            this.queue.shift();
         }
         
-        return result;
+        return this.queue.length;
     }
 }
 
