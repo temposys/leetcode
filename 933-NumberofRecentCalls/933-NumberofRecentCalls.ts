@@ -1,3 +1,4 @@
+// Last updated: 17/02/2025, 20:39:01
 class RecentCounter {
     private requests: number[];
 
@@ -8,10 +9,6 @@ class RecentCounter {
     ping(t: number): number {
         this.requests.push(t);
         const minTime = t - 3000;
-
-        if (this.requests.length === 0) {
-            return 0;
-        }
 
         let i = this.requests.length - 1;
         let result: number = 0;
