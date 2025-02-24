@@ -1,11 +1,11 @@
-// Last updated: 23/02/2025, 19:27:27
+// Last updated: 23/02/2025, 19:30:37
 function removeStars(s: string): string {
     let arr: string[] = [];
-    for (let letter of s) {
-        if (letter === '*') {
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === '*') {
             arr.pop();
         } else {
-            arr.push(letter);
+            arr.push(s[i]);
         }
     }
 
