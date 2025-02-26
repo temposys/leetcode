@@ -1,4 +1,4 @@
-// Last updated: 25/02/2025, 19:49:58
+// Last updated: 25/02/2025, 19:50:17
 class Solution {
 
     /**
@@ -9,10 +9,6 @@ class Solution {
     function myPow($x, $n) {
         if ($x === 0) return 0;
         if ($n === 0) return 1;
-
-        // if (abs($x) < PHP_FLOAT_MIN && $n < 0) {
-        //     return INF; // Avoid division by zero
-        // }
 
         $rasing = 1;
         $deg = abs($n);
