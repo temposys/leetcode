@@ -1,3 +1,4 @@
+// Last updated: 25/02/2025, 19:49:58
 class Solution {
 
     /**
@@ -9,9 +10,9 @@ class Solution {
         if ($x === 0) return 0;
         if ($n === 0) return 1;
 
-        if (abs($x) < PHP_FLOAT_MIN && $n < 0) {
-            return INF; // Avoid division by zero
-        }
+        // if (abs($x) < PHP_FLOAT_MIN && $n < 0) {
+        //     return INF; // Avoid division by zero
+        // }
 
         $rasing = 1;
         $deg = abs($n);
@@ -25,13 +26,6 @@ class Solution {
                 $deg--;
             }
         }
-        // for ($i = 1; $i <= abs($n); $i++) {
-        //     $rasing *= $x;
-
-        //     if (abs($rasing) < PHP_FLOAT_MIN && $n < 0) {
-        //         return 0;
-        //     } 
-        // }
 
         return $n > 0 ? $rasing : 1/$rasing;
     }
