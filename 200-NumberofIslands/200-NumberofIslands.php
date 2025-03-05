@@ -8,12 +8,14 @@ class Solution {
         if (empty($grid)) return 0;
 
         $islands = 0;
+        $rows = count($grid);
+        $cols = count($grid[0]);
 
-        for ($i = 0; $i < count($grid); $i++) {
-            for ($j = 0; $j < count($grid[0]); $j++) {
+        for ($i = 0; $i < $rows; $i++) {
+            for ($j = 0; $j < $cols; $j++) {
                 if ($grid[$i][$j] == "1") {
                     $islands++;
-                    $this->dfs($grid, $i, $j);
+                    $this->dfs($grid, $i, $j, $rows, $cols);
                 }
             }
         }
@@ -21,15 +23,18 @@ class Solution {
         return $islands;
     }
 
-    function dfs(&$grid, $i, $j): void {
-        if (!isset($grid[$i][$j]) || $grid[$i][$j] == "0") {
+    function dfs(&$grid, $i, $j, $rows, $cols): void {
+        if (
+            $i < 0 || $i >= $rows || $j < 0 || $j >= $cols // out of range
+            || $grid[$i][$j] == "0"
+        ) {
             return;
         }
 
-        $grid[$i][$j] = "0";
-        $this->dfs($grid, $i+1, $j);
-        $this->dfs($grid, $i-1, $j);
-        $this->dfs($grid, $i, $j+1);
-        $this->dfs($grid, $i, $j-1);
+        $grid[$i][$j] = "0"; // mark as visited
+        $this->dfs($grid, $i+1, $j, $rows, $cols); // right
+        $this->dfs($grid, $i-1, $j, $rows, $cols); // left
+        $this->dfs($grid, $i, $j+1, $rows, $cols); // up
+        $this->dfs($grid, $i, $j-1, $rows, $cols); // down
     }
 }
