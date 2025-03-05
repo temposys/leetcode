@@ -11,7 +11,7 @@ class Solution {
 
         for ($i = 0; $i < count($grid); $i++) {
             for ($j = 0; $j < count($grid[0]); $j++) {
-                if ($grid[$i][$j] === "1") {
+                if ($grid[$i][$j] == "1") {
                     $islands++;
                     $this->dfs($grid, $i, $j);
                 }
@@ -22,7 +22,7 @@ class Solution {
     }
 
     function dfs(&$grid, $i, $j): void {
-        if (!isset($grid[$i][$j]) || $grid[$i][$j] === "0") {
+        if (!isset($grid[$i][$j]) || $grid[$i][$j] == "0") {
             return;
         }
 
