@@ -5,6 +5,8 @@ class Solution {
      * @return Integer
      */
     function numIslands($grid) {
+        if (empty($grid)) return 0;
+        
         $islands = 0;
 
         for ($i = 0; $i < count($grid); $i++) {
