@@ -1,4 +1,4 @@
-// Last updated: 27/03/2025, 20:58:19
+// Last updated: 27/03/2025, 21:03:28
 class Solution {
 
     /**
@@ -13,8 +13,12 @@ class Solution {
             $map[$word] = ($map[$word] ?? 0) + 1;
         }
         array_multisort(array_values($map), SORT_DESC, array_keys($map), SORT_ASC, $map);
-        // var_dump(array_keys($f));
 
         return array_slice(array_keys($map), 0, $k);
+
+        // $countValues = array_count_values($words);
+        // ksort($countValues);
+        // arsort($countValues);
+        // return array_slice(array_keys($countValues), 0, $k);
     }
 }
