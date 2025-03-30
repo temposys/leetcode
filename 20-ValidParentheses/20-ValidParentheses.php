@@ -1,6 +1,6 @@
-// Last updated: 30/03/2025, 12:53:39
+// Last updated: 30/03/2025, 13:01:19
 class Solution {
-    private array $chars = ['(' => ')', '{' => '}', '[' => ']'];
+    private array $bracketMap = ['(' => ')', '{' => '}', '[' => ']'];
 
     /**
      * @param String $s
@@ -9,19 +9,20 @@ class Solution {
     function isValid($s) {
         $stack = [];
         for ($i = 0; $i < strlen($s); $i++) {
-            if (in_array($s[$i], $this->chars)) {
+            if (in_array($s[$i], $this->bracketMap)) {
+                $lastElement = end($stack);
                 // closed bracket
-                if (end($stack) === null) {
+                if ($lastElement === null) {
                     return false;
                 }
-                if ($s[$i] === $this->chars[end($stack)]) {
+                if ($s[$i] === $this->bracketMap[$lastElement]) {
                     // pair found
                     array_pop($stack); // remove last element
                 } else {
-                    $stack[] = $s[$i];
+                    array_push($stack, $s[$i]);
                 }
             } else {
-                $stack[] = $s[$i];
+                array_push($stack, $s[$i]);
             }
         }
 
