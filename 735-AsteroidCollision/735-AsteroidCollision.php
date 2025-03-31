@@ -1,4 +1,4 @@
-// Last updated: 30/03/2025, 17:30:07
+// Last updated: 30/03/2025, 17:33:10
 class Solution {
 
     /**
@@ -6,15 +6,15 @@ class Solution {
      * @return Integer[]
      */
     function asteroidCollision($asteroids) {
-        $stack = [$asteroids[0]];
-        for ($i = 1; $i < count($asteroids); $i++) {
+        $stack = [];
+        foreach ($asteroids as $asteroid) {
             $collision = false;
-            while (!empty($stack) && end($stack) > 0 && $asteroids[$i] < 0) {
+            while (!empty($stack) && end($stack) > 0 && $asteroid < 0) {
                 $collision = true;
-                if (end($stack) === abs($asteroids[$i])) {
+                if (end($stack) === abs($asteroid)) {
                     array_pop($stack);
                     break;
-                } elseif (end($stack) < abs($asteroids[$i])) {
+                } elseif (end($stack) < abs($asteroid)) {
                     $collision = false;
                     array_pop($stack);
                     continue;
@@ -23,7 +23,7 @@ class Solution {
                 }
             }
             if (!$collision) {
-                $stack[] = $asteroids[$i];
+                $stack[] = $asteroid;
             }
 
         }
