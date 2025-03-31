@@ -1,4 +1,4 @@
-// Last updated: 30/03/2025, 17:35:18
+// Last updated: 30/03/2025, 18:00:13
 class Solution {
 
     /**
@@ -8,25 +8,22 @@ class Solution {
     function asteroidCollision($asteroids) {
         $stack = [];
         foreach ($asteroids as $asteroid) {
-            $collision = false;
-            while (!empty($stack) && end($stack) > 0 && $asteroid < 0) {
-                $collision = true;
-                if (abs(end($stack)) === abs($asteroid)) {
-                    array_pop($stack);
-                    break;
-                } elseif (abs(end($stack)) < abs($asteroid)) {
-                    $collision = false;
-                    array_pop($stack);
-                } else {
-                    break;
+            $crush = 1;
+            while ($crush > 0 && $asteroid < 0 && !empty($stack) && end($stack) > 0) {
+                /*
+                Spaceship (<=>) for save separated info about crush
+                -1 for convert negative int to positive
+                (0 - is both crush, 1 - is current asteroid crush, -1 - is stack asteroid crush)
+                */
+                $crush = -1 * $asteroid <=> end($stack);
+                if ($crush >= 0) { 
+                    array_pop($stack); 
                 }
             }
-            if (!$collision) {
-                $stack[] = $asteroid;
+            if ($crush > 0) {
+                array_push($stack, $asteroid);
             }
-
         }
-
         return $stack;
     }
 }
