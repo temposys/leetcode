@@ -1,4 +1,4 @@
-// Last updated: 30/03/2025, 17:34:34
+// Last updated: 30/03/2025, 17:35:18
 class Solution {
 
     /**
@@ -11,10 +11,10 @@ class Solution {
             $collision = false;
             while (!empty($stack) && end($stack) > 0 && $asteroid < 0) {
                 $collision = true;
-                if (end($stack) === abs($asteroid)) {
+                if (abs(end($stack)) === abs($asteroid)) {
                     array_pop($stack);
                     break;
-                } elseif (end($stack) < abs($asteroid)) {
+                } elseif (abs(end($stack)) < abs($asteroid)) {
                     $collision = false;
                     array_pop($stack);
                 } else {
