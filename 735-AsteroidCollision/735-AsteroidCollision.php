@@ -1,4 +1,4 @@
-// Last updated: 30/03/2025, 17:33:10
+// Last updated: 30/03/2025, 17:34:34
 class Solution {
 
     /**
@@ -17,7 +17,6 @@ class Solution {
                 } elseif (end($stack) < abs($asteroid)) {
                     $collision = false;
                     array_pop($stack);
-                    continue;
                 } else {
                     break;
                 }
