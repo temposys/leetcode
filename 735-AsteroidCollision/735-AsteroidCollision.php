@@ -1,4 +1,4 @@
-// Last updated: 30/03/2025, 18:00:13
+// Last updated: 30/03/2025, 18:00:41
 class Solution {
 
     /**
@@ -15,7 +15,7 @@ class Solution {
                 -1 for convert negative int to positive
                 (0 - is both crush, 1 - is current asteroid crush, -1 - is stack asteroid crush)
                 */
-                $crush = -1 * $asteroid <=> end($stack);
+                $crush = abs($asteroid) <=> end($stack);
                 if ($crush >= 0) { 
                     array_pop($stack); 
                 }
