@@ -1,41 +1,30 @@
+// Last updated: 02/04/2025, 16:16:25
 class Solution {
 
     /**
-     * @param Integer[] $weights
-     * @param Integer $days
-     * @return Integer
+     * @param Integer[] $digits
+     * @return Integer[]
      */
-    function shipWithinDays($weights, $days) {
-        $min = max($weights); // min capacity
-        $max = array_sum($weights); // max capacity
-
-        while ($min < $max) {
-            $avg = floor(($min+$max)/2);
-            if ($this->isPossible($weights, $days, $avg)) {
-                $max = $avg;
+    function plusOne($digits) {
+        $temp = 0;
+        for ($i = count($digits) - 1; $i >= 0; $i--) {
+            $cur = $digits[$i] + $temp;
+            if ($i === count($digits) - 1) {
+                ++$cur;
+            }
+            if ($cur >= 10) {
+                $temp = 1;
+                $digits[$i] = $cur - 10;
+                if ($i === 0) {
+                    array_unshift($digits, 1);
+                }
             } else {
-                $min = $avg + 1;
+                $digits[$i] = $cur;
+                break;
             }
+            
         }
 
-        return $min;
-    }
-
-    function isPossible($weights, $days, $avg) {
-        $d = 1;
-        $total = 0;
-        for ($i = 0; $i < count($weights); $i++) {
-            $total += $weights[$i];
-
-            if ($total > $avg) {
-                $d++; // last weight will go the next day
-                $total = $weights[$i];
-            }
-            if ($d > $days) {
-                return false;
-            }
-        }
-
-        return true;
+        return $digits;
     }
 }
