@@ -1,4 +1,4 @@
-// Last updated: 02/04/2025, 14:59:21
+// Last updated: 02/04/2025, 15:11:46
 class Solution {
 
     /**
@@ -6,28 +6,32 @@ class Solution {
      * @param Integer $h
      * @return Integer
      */
+
+    function getHours($piles, $k) {
+        $hours = 0;
+
+        foreach ($piles as $pile) {
+            $hours += ceil($pile / $k);
+        }
+        return $hours;
+    }
+
     function minEatingSpeed($piles, $h) {
-        $left = 1;
-        $right = max($piles);
-
         
-        while ($left < $right) {
-            $middle = (int) (($right + $left) / 2);
-            $valid = true;
-            $curHours = 0;
+        $maxPiles = max($piles);
 
-            foreach($piles as $pile) {
-                $curHours += (int) ceil($pile/$middle);
-                if($curHours > $h) {
-                    $valid = false;
-                    break;
-                }
+        $left = 1;
+        $right = $maxPiles;
+
+        while ($left <= $right) {
+            $mid = $left + floor(($right - $left) / 2);
+            $hoursForK = $this->getHours($piles, $mid);
+
+            if ($hoursForK <= $h) {
+                $right = $mid - 1;
             }
-
-            if ($valid) {
-                $right = $middle;
-            } else {
-                $left = $middle + 1;
+            else {
+                $left = $mid + 1;
             }
         }
 
