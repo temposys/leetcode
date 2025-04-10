@@ -1,4 +1,4 @@
-// Last updated: 09/04/2025, 19:08:06
+// Last updated: 09/04/2025, 19:22:12
 /**
  * @param {number[][]} obstacleGrid
  * @return {number}
@@ -9,33 +9,24 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     const m = obstacleGrid.length;
     const n = obstacleGrid[0].length;
 
-    if (m === 1) {
-        for (let i = 0; i < n; i++) {
-            if (obstacleGrid[0][i] === 1) return 0;
-        }
-        return 1;
+    let grid = Array.from({ length: m }, () => Array(n).fill(0));
+
+    // first row
+    for (let j = 0; j < n; j++) {
+        if (obstacleGrid[0][j] === 1) break;
+        grid[0][j] = 1;
     }
 
-    if (n === 1) {
-        for (let i = 0; i < m; i++) {
-            if (obstacleGrid[i][0] === 1) return 0;
-        }
-        return 1;
-    }
-
-    let grid = new Array(m).fill(new Array(n).fill(0));
-
+    // first col
     for (let i = 0; i < m; i++) {
-        for ( let j = 0; j < n; j++) {
-            if (i === 0) {
-                grid[i][j] = (obstacleGrid[i][j] === 1 || (j > 0 && grid[i][j-1] === 0)) ? 0 : 1;
-            } else if (j === 0) {
-                grid[i][j] = (obstacleGrid[i][j] === 1 || (i > 0 && grid[i-1][j] === 0)) ? 0 : 1;
-            } else if (obstacleGrid[i][j] === 1) {
-                grid[i][j] = 0;
-            } else {
-                grid[i][j] = grid[i-1][j] + grid[i][j-1];
-            }
+        if (obstacleGrid[i][0] === 1) break;
+        grid[i][0] = 1;
+    }
+
+
+    for (let i = 1; i < m; i++) {
+        for ( let j = 1; j < n; j++) {
+            grid[i][j] = (obstacleGrid[i][j] === 1) ? 0 : grid[i-1][j] + grid[i][j-1];
         }
     }
 
