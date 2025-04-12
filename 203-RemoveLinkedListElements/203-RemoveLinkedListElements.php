@@ -1,4 +1,4 @@
-// Last updated: 12/04/2025, 12:19:17
+// Last updated: 12/04/2025, 12:25:21
 /**
  * Definition for a singly-linked list.
  * class ListNode {
@@ -18,17 +18,19 @@ class Solution {
      * @return ListNode
      */
     function removeElements($head, $val) {
-        $newHead = new ListNode();
-        $newCur = $newHead;
-        $cur = $head;
-        while($cur !== null) {
-            if ($cur->val !== $val) {
-                $newCur->next = new ListNode($cur->val); 
-                $newCur = $newCur->next;
-            }
-            $cur = $cur->next;
+        while ($head && $head->val === $val) {
+            $head = $head->next;
         }
 
-        return $newHead->next;
+        $cur = $head;
+        while($cur && $cur->next) {
+            if ($cur->next->val === $val) {
+                $cur->next = $cur->next->next;
+            } else {
+                $cur = $cur->next;
+            }
+        }
+
+        return $head;
     }
 }
