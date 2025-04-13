@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 12:57:38
+// Last updated: 13/04/2025, 13:00:06
 class Solution {
 
     /**
@@ -14,12 +14,11 @@ class Solution {
         sort($intervals);
 
         $result = [$intervals[0]];
-
         $j = 0;
 
-        for ($i = 1; $i < count($intervals); $i++) {
+        for ($i = 1; $i < $count; $i++) {
             if ($result[$j][1] >= $intervals[$i][0]) {
-                $result[$j] = [$result[$j][0], max($result[$j][1], $intervals[$i][1])];
+                $result[$j][1] = max($result[$j][1], $intervals[$i][1]);
             } else {
                 array_push($result, $intervals[$i]);
                 $j++;
