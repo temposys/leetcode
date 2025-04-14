@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 17:47:16
+// Last updated: 13/04/2025, 17:51:04
 class Solution {
 
     /**
@@ -8,11 +8,11 @@ class Solution {
     function canVisitAllRooms($rooms) {
         $roomNum = count($rooms);
 
-        $visited = array_fill(0, $roomNum, 0);
+        $visited = [];
 
         $this->visit($visited, $rooms, 0); // DFS
 
-        return !in_array(0, $visited);
+        return count($visited) === $roomNum;
     }
 
     function visit(&$visited, &$rooms, $key) {
