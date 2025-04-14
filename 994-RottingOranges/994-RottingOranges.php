@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 18:34:42
+// Last updated: 13/04/2025, 18:50:43
 class Solution {
 
     /**
@@ -10,6 +10,8 @@ class Solution {
         $m = count($grid[0]);
         $min = 0;
         $distance = [[0,1], [0,-1], [1,0], [-1,0]];
+        $fresh = 0;
+        $queue = [];
 
         for ($i = 0; $i < $n; $i++) {
             for ($j = 0; $j < $m; $j++) {
@@ -20,10 +22,10 @@ class Solution {
             }
         }
 
-        while ($fresh > 0 && $queue) {
-            $qLength = count($queue);
+        if ($fresh === 0) return 0;
 
-            for ($i = 0; $i < $qLength; $i++) {
+        while (($size = count($queue)) > 0) {
+            for ($i = 0; $i < $size; $i++) {
                 [$x, $y] = array_shift($queue);
                 
                 foreach ($distance as $value) {
@@ -38,8 +40,10 @@ class Solution {
             }
 
             $min++;
+
+            if ($fresh === 0) return $min;
         }
 
-        return $fresh ? -1 : $min;
+        return -1;
     }
 }
