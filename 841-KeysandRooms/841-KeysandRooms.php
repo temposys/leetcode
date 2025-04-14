@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 17:51:13
+// Last updated: 13/04/2025, 17:52:07
 class Solution {
 
     /**
@@ -16,11 +16,11 @@ class Solution {
     }
 
     function visit(&$visited, &$rooms, $key) {
-        if ($visited[$key] === 1) {
+        if ($visited[$key]) {
             return;
         }
 
-        $visited[$key] = 1;
+        $visited[$key] = true;
 
         foreach ($rooms[$key] as $room) {
             $this->visit($visited, $rooms, $room);
