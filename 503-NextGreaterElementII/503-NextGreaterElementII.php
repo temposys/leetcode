@@ -1,4 +1,4 @@
-// Last updated: 14/04/2025, 11:47:16
+// Last updated: 14/04/2025, 12:03:37
 class Solution {
 
     /**
@@ -6,16 +6,19 @@ class Solution {
      * @return Integer[]
      */
     function nextGreaterElements($nums) {
-        $count = count($nums);
-        $ans = array_fill(0, $count, -1);
+        $length = count($nums);
+        $ans = array_fill(0, $length, -1);
+        $stack = [];
 
-        foreach ($nums as $key => $num) {
-            $curKey = $key;
-            while (($curKey = ($curKey === $count - 1) ? 0 : $curKey + 1) !== $key) {
-                if ($nums[$curKey] > $num) {
-                    $ans[$key] = $nums[$curKey];
-                    break;
-                }
+        for ($i = 0; $i < $length * 2; $i++) {
+            $element = $nums[$i % $length];
+
+            while (!empty($stack) && $nums[end($stack)] < $element) {
+                $ans[end($stack)] = $element;
+                array_pop($stack);
+            }
+            if ($i < $length) {
+                $stack[] = $i;
             }
         }
 
