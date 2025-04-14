@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 17:51:04
+// Last updated: 13/04/2025, 17:51:13
 class Solution {
 
     /**
@@ -25,7 +25,5 @@ class Solution {
         foreach ($rooms[$key] as $room) {
             $this->visit($visited, $rooms, $room);
         }
-
-        return;
     }
 }
