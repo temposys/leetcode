@@ -1,4 +1,4 @@
-// Last updated: 15/04/2025, 08:56:58
+// Last updated: 15/04/2025, 08:59:56
 class Solution {
 
     /**
@@ -6,8 +6,14 @@ class Solution {
      * @return NULL
      */
     function reverseString(&$s) {
+        $len = count($s);
+
+        if ($len === 1) {
+            return $s;
+        }
+
         $start = 0;
-        $end = count($s) - 1;
+        $end = $len - 1;
         while ($end > $start) {
             [$s[$start], $s[$end]] = [$s[$end], $s[$start]];
             $start++;
