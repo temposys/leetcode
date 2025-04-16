@@ -1,4 +1,4 @@
-// Last updated: 16/04/2025, 13:03:12
+// Last updated: 16/04/2025, 13:15:27
 class Solution {
 
     /**
@@ -6,14 +6,31 @@ class Solution {
      * @return Integer
      */
     function majorityElement($nums) {
-        $map = [];
+        $count = 0;
+        $value = null;
 
         foreach ($nums as $num) {
-            $map[$num]++;
+            if ($count === 0) {
+                $value = $num;
+            }
+
+            if ($value === $num) {
+                $count++;
+            } else {
+                $count--;
+            }
         }
 
-        arsort($map);
+        return $value;
 
-        return array_shift(array_keys($map));
+        // $map = [];
+
+        // foreach ($nums as $num) {
+        //     $map[$num]++;
+        // }
+
+        // arsort($map);
+
+        // return array_shift(array_keys($map));
     }
 }
