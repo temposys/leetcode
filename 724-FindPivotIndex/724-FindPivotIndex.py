@@ -1,4 +1,4 @@
-# Last updated: 18/04/2025, 14:18:48
+# Last updated: 18/04/2025, 14:20:37
 class Solution(object):
     def pivotIndex(self, nums):
         """
