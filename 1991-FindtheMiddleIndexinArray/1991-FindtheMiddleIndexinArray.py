@@ -1,4 +1,4 @@
-# Last updated: 18/04/2025, 14:26:19
+# Last updated: 18/04/2025, 14:27:12
 class Solution(object):
     def findMiddleIndex(self, nums):
         """
