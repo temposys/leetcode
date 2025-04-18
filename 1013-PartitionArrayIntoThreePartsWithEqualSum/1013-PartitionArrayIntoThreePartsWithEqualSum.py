@@ -1,4 +1,4 @@
-# Last updated: 18/04/2025, 14:55:58
+# Last updated: 18/04/2025, 14:56:05
 class Solution(object):
     def canThreePartsEqualSum(self, arr):
         """
