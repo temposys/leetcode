@@ -1,4 +1,4 @@
-# Last updated: 18/04/2025, 14:17:51
+# Last updated: 18/04/2025, 14:18:48
 class Solution(object):
     def pivotIndex(self, nums):
         """
@@ -7,14 +7,11 @@ class Solution(object):
         """
         sum1 = 0
         sum2 = sum(nums)
-        prev = 0
         for key, num in enumerate(nums):
-            sum1 += prev
             sum2 -= num
-
             if sum1 == sum2:
                 return key
-            prev = num
+            sum1 += num
         
         return -1
         
