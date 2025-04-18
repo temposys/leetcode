@@ -1,4 +1,4 @@
-# Last updated: 18/04/2025, 14:49:20
+# Last updated: 18/04/2025, 14:55:58
 class Solution(object):
     def canThreePartsEqualSum(self, arr):
         """
@@ -10,7 +10,7 @@ class Solution(object):
         if total % 3 != 0:
             return False
 
-        target = total // 3
+        target = total / 3
         current_sum, count = 0, 0
         endInd = len(arr) - 1
 
