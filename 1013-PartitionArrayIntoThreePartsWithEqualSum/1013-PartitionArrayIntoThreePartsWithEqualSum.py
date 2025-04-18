@@ -1,17 +1,27 @@
-# Last updated: 18/04/2025, 14:48:29
+# Last updated: 18/04/2025, 14:49:20
 class Solution(object):
     def canThreePartsEqualSum(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+
         total = sum(arr)
         if total % 3 != 0:
             return False
+
         target = total // 3
-        count, current_sum = 0, 0
-        for i in range(len(arr)):
+        current_sum, count = 0, 0
+        endInd = len(arr) - 1
+
+        for i in range(endInd):
             current_sum += arr[i]
             if current_sum == target:
-                count += 1
                 current_sum = 0
-                if count == 2 and i < len(arr) - 1:
+                count += 1
+                if count == 2:
                     return True
+        
         return False
 
+        
