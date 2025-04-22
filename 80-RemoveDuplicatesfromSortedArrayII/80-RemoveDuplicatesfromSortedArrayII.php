@@ -1,4 +1,4 @@
-// Last updated: 21/04/2025, 17:28:53
+// Last updated: 21/04/2025, 17:29:02
 class Solution {
 
     /**
@@ -6,9 +6,6 @@ class Solution {
      * @return Integer
      */
     function removeDuplicates(&$nums) {
-        if (count($nums) <= 2) {
-            return count($nums);
-        }
         $count = 0;
         $cur = $nums[0];
         $i = 0;
