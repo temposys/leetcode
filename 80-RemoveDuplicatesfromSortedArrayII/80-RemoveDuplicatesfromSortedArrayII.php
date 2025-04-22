@@ -1,4 +1,4 @@
-// Last updated: 21/04/2025, 17:27:03
+// Last updated: 21/04/2025, 17:27:18
 class Solution {
 
     /**
@@ -24,6 +24,6 @@ class Solution {
             $k++;
         }
 
-        return $k;
+        return $i;
     }
 }
