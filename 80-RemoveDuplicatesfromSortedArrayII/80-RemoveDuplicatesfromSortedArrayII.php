@@ -1,4 +1,4 @@
-// Last updated: 21/04/2025, 17:27:18
+// Last updated: 21/04/2025, 17:27:44
 class Solution {
 
     /**
@@ -9,7 +9,6 @@ class Solution {
         $count = 0;
         $cur = $nums[0];
         $i = 0;
-        $k = 0;
         while (isset($nums[$i])) {
             if ($cur === $nums[$i]) {
                 $count++;
@@ -21,7 +20,6 @@ class Solution {
                 $count = 1;
             }
             $i++;
-            $k++;
         }
 
         return $i;
