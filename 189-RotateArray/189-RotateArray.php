@@ -1,21 +1,17 @@
-// Last updated: 23/04/2025, 19:49:30
+// Last updated: 23/04/2025, 19:51:59
 class Solution {
 
-    /**
-     * @param Integer[] $nums
-     * @param Integer $k
-     * @return NULL
-     */
-    function rotate(&$nums, $k) {
-        $len = count($nums);
-        $k = $k % $len;
-        // while ($k > 0) {
-        //     $temp = $nums[$len - 1];
-        //     unset($nums[$len - 1]);
-        //     array_unshift($nums, $temp);
-        //     $k--;
-        // }
+	function rotate(&$nums, $k) {
+        $count = count($nums);
+        if ($count === 0) return $nums;
 
-        $nums = array_merge(array_slice($nums, $len - $k, $k), array_slice($nums, 0, $len - $k));
+        $k = $k % $count;
+        if ($k === 0) return $nums;
+
+        $nums = array_merge(
+            array_slice($nums, -$k),
+            array_slice($nums, 0, $count - $k),
+        );
+        return $nums;
     }
 }
