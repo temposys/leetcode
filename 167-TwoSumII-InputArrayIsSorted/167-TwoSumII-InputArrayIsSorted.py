@@ -1,4 +1,4 @@
-# Last updated: 24/04/2025, 18:35:51
+# Last updated: 24/04/2025, 18:37:17
 class Solution(object):
     def twoSum(self, numbers, target):
         """
@@ -11,11 +11,7 @@ class Solution(object):
 
         while (start < end):
             cur_sum = numbers[start] + numbers[end]
-            if cur_sum == target:
-                return [start + 1, end + 1]
-            if cur_sum > target:
-                end -= 1
-            else:
-                start += 1
+            if cur_sum == target: return [start + 1, end + 1]
+            elif cur_sum > target: end -= 1
+            else: start += 1
         
-        return
