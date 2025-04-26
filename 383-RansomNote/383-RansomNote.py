@@ -1,10 +1,11 @@
-# Last updated: 26/04/2025, 14:33:47
+# Last updated: 26/04/2025, 14:45:22
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        l = list(magazine)
+        mMap = Counter(magazine)
+        rMap = Counter(ransomNote)
 
-        for s in ransomNote:
-            if s in l: l.remove(s)
-            else: return False
-        
+        for char in rMap:
+            if char not in mMap or mMap[char] < rMap[char]:
+                return False
+
         return True
