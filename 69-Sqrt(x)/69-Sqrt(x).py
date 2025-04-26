@@ -1,9 +1,24 @@
-# Last updated: 26/04/2025, 14:09:48
+# Last updated: 26/04/2025, 14:11:05
 class Solution:
     def mySqrt(self, x: int) -> int:
-        i = 0
+        if x == 0 or x == 1:
+            return x
+            
+        low = 0
+        high = x // 2
+        sqr = 0
 
-        while x >= i * i:
-            i += 1
+        while low <= high:
+            mid = low + ((high - low) // 2)
+            square = mid * mid
 
-        return i - 1
+            if square == x:
+                return mid
+            
+            if square < x:
+                sqr = max(sqr, mid)
+                low = mid + 1
+            else:
+                high = mid - 1
+        
+        return sqr
