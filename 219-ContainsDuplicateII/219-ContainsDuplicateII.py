@@ -1,4 +1,4 @@
-# Last updated: 01/05/2025, 09:17:29
+# Last updated: 01/05/2025, 09:17:34
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         if len(nums) <= 1: return False
