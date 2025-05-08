@@ -1,4 +1,4 @@
-# Last updated: 07/05/2025, 18:34:15
+# Last updated: 07/05/2025, 18:35:12
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
         pList = re.findall(r'\w+', paragraph.lower())
