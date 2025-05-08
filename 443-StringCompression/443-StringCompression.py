@@ -1,30 +1,28 @@
-# Last updated: 08/05/2025, 13:39:16
+# Last updated: 08/05/2025, 13:43:44
 class Solution:
     def compress(self, chars: List[str]) -> int:
         count = 0
-        s = ""
         prev = ''
         n = len(chars)
 
-        def addS(s, count, prev):
-            s += prev
-            if count > 1: s += str(count)
-            return s
+        def addS(chars, count, prev):
+            chars.append(prev)
+            if count > 1: 
+                for s in str(count):
+                    chars.append(s)
+            return
 
-        for char in chars:
+        for i in range(n):
+            char = chars[i]
             if char == prev:
                 count += 1
             else:
                 if prev != '':
-                    s = addS(s, count, prev)
+                    addS(chars, count, prev)
                 prev = char
                 count = 1
 
-        s = addS(s, count, prev)
-        
-        for i in s:
-            chars.append(i)
-
+        addS(chars, count, prev)
         chars[:] = chars[n:]
 
         return len(chars)
