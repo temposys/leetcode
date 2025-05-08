@@ -1,10 +1,10 @@
-# Last updated: 08/05/2025, 14:06:48
+# Last updated: 08/05/2025, 14:08:49
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
-        counter1 = Counter(word1)
-        counter2 = Counter(word2)
+        def getList(text):
+            return sorted(Counter(text).values())
 
-        if set(counter1.keys()) != set(counter2.keys()):
+        if set(word1) != set(word2):
             return False
 
-        return sorted(counter1.values()) == sorted(counter2.values())
+        return getList(word1) == getList(word2)
