@@ -1,17 +1,16 @@
-# Last updated: 12/05/2025, 18:36:55
+# Last updated: 12/05/2025, 18:42:42
 class Solution:
     def countCharacters(self, words: List[str], chars: str) -> int:
-        correct = ''
+        res = 0
         
         for word in words:
-            use = True
-            curMap = list(chars)
+            isCorrect = True
             for i in word:
-                if i not in curMap:
-                    use = False
+                if word.count(i) > chars.count(i):
+                    # wrong word
+                    isCorrect = False
                     break
-                curMap.remove(i)
-            if use == True:
-                correct += word
+            if isCorrect:
+                res += len(word)
         
-        return len(correct)
+        return res
