@@ -1,15 +1,15 @@
-# Last updated: 02/06/2025, 20:13:13
+# Last updated: 02/06/2025, 20:17:03
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        arr_len = len(nums)
-        min_len = arr_len + 1
+        n = len(nums)
+        min_len = n + 1
         summ = 0
         start = 0
-        for i in range(arr_len):
-            summ += nums[i]
+        for cur in range(n):
+            summ += nums[cur]
             while summ >= target:
-                min_len = min(min_len, i - start + 1)
+                min_len = min(min_len, cur - start + 1)
                 summ -= nums[start]
                 start += 1
         
-        return min_len if min_len <= arr_len else 0
+        return min_len if min_len <= n else 0
