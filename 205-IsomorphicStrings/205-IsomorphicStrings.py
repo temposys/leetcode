@@ -1,26 +1,19 @@
-# Last updated: 06/09/2025, 18:58:26
+# Last updated: 06/09/2025, 19:06:54
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
-        map1 = []
-        map2 = []
-        for char in s:
-            map1.append(s.index(char))
-        for char in t:
-            map2.append(t.index(char))
-
-        return map1 == map2
-
-        # if len(s) != len(t): return False
-
-        # map1 = {}
-        # map2 = {}
-        # for i in range(0, len(s)):
-        #     if (
-        #         (s[i] in map1 and map1[s[i]] != t[i])
-        #         or (t[i] in map2 and map2[t[i]] != s[i])
-        #     ): return False
-        #     map1[s[i]] = t[i]
-        #     map2[t[i]] = s[i]
+        if len(s) != len(t):
+            return False
         
-        # return True
+        map_s_t = {}
+        map_t_s = {}
+        
+        for ch_s, ch_t in zip(s, t):
+            if ch_s in map_s_t and map_s_t[ch_s] != ch_t:
+                return False
+            if ch_t in map_t_s and map_t_s[ch_t] != ch_s:
+                return False
+            
+            map_s_t[ch_s] = ch_t
+            map_t_s[ch_t] = ch_s
+        
+        return True
