@@ -1,6 +1,7 @@
-# Last updated: 06/09/2025, 18:58:12
+# Last updated: 06/09/2025, 18:58:26
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t): return False
         map1 = []
         map2 = []
         for char in s:
