@@ -1,19 +1,17 @@
-# Last updated: 06/09/2025, 19:06:54
+# Last updated: 06/09/2025, 19:53:43
 class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        
-        map_s_t = {}
-        map_t_s = {}
-        
-        for ch_s, ch_t in zip(s, t):
-            if ch_s in map_s_t and map_s_t[ch_s] != ch_t:
-                return False
-            if ch_t in map_t_s and map_t_s[ch_t] != ch_s:
-                return False
-            
-            map_s_t[ch_s] = ch_t
-            map_t_s[ch_t] = ch_s
-        
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        arr = s.split(' ')
+        if len(arr) != len(pattern): return False
+        mapP = {}
+        setS = set()
+    
+        for i in range(0, len(pattern)):
+            if (
+                (pattern[i] in mapP and mapP[pattern[i]] != arr[i]) 
+                or (pattern[i] not in mapP and arr[i] in setS)
+            ): return False
+            mapP[pattern[i]] = arr[i]
+            setS.add(arr[i])
+
         return True
