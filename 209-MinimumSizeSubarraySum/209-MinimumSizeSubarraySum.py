@@ -1,4 +1,4 @@
-# Last updated: 02/06/2025, 20:17:03
+# Last updated: 07/09/2025, 15:20:37
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         n = len(nums)
