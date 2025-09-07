@@ -1,17 +1,8 @@
-# Last updated: 06/09/2025, 20:26:44
+# Last updated: 06/09/2025, 20:39:03
 class Solution:
-    def wordPattern(self, pattern: str, s: str) -> bool:
-        arr = s.split(' ')
-        if len(arr) != len(pattern): return False
-        mapP = {}
-        setS = set()
-    
-        for i in range(0, len(pattern)):
-            if (
-                (pattern[i] in mapP and mapP[pattern[i]] != arr[i]) 
-                or (pattern[i] not in mapP and arr[i] in setS)
-            ): return False
-            mapP[pattern[i]] = arr[i]
-            setS.add(arr[i])
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        if len(deck) == 1: return False
+        counter = Counter(deck)
+        values = set(counter.values())
 
-        return True
+        return reduce(gcd, values) >= 2
