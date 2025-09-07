@@ -1,4 +1,4 @@
-# Last updated: 06/09/2025, 19:53:43
+# Last updated: 06/09/2025, 20:26:44
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         arr = s.split(' ')
