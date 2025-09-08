@@ -1,10 +1,16 @@
-# Last updated: 07/09/2025, 17:18:00
+# Last updated: 07/09/2025, 17:21:36
 class Solution:
     def getNoZeroIntegers(self, n: int) -> List[int]:
-        num = 0
-        rest = 0
-        while ('0' in str(num) or '0' in str(rest)):
-            num = randint(1,n-1)
-            rest = n-num
-        
-        return [rest, num] if num > rest else [num, rest]
+        # a+b=n
+        # a=n-b
+        def check(val):
+            while val:
+                tmp=val%10
+                if tmp==0:
+                    return False
+                val//=10
+            return True
+        for b in range(1,n): 
+            a=n-b
+            if check(a) and check(b):
+                return [a,b]
